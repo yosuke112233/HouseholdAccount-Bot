@@ -13,13 +13,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-This is a template for the configuration file.
-Make a copy called `application.yml` and change the values below.
-
 line.bot:
-  channel-token: 'Put Your Channel Token Here.'
-  channel-secret: 'Put Your Channel Secret Here.'
+  channel-token: 'xYpgG5HHiHWB+GNoUeQG3W82hL6C26uLZcc4chJxzDpRFFIRPIzMXvJxFXDd9wb0JOCLr1CyZXihmjW4MXIb5/gyyKf3RwGeKhVUFRtvqBiNmGglhS5t7yhpAbOpV5xLm0kUN9qrtJ4MFI7p59maHQdB04t89/1O/w1cDnyilFU='
+  channel-secret: 'd85cb9594f9c0252f67da9415bd70ca5'
   handler.path: /callback
+
 
 # To remove Client wire logs. Please comment out following lines.
 # See: https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html
