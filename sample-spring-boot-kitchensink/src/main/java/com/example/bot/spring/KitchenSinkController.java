@@ -16,7 +16,7 @@
 
 package com.example.bot.spring;
 
-import static java.util.Collections.singletonList;
+import static java.util.Collections.*;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -38,7 +38,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.google.common.io.ByteStreams;
-
 import com.linecorp.bot.client.LineBlobClient;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.MessageContentResponse;
@@ -635,6 +634,16 @@ public class KitchenSinkController {
                                                     .build())
                                       .build());
                 break;
+            case "テスト":
+            	String message = text.concat("テストです");
+
+                log.info("Returns echo message {}: {}", replyToken, message);
+                this.replyText(
+                        replyToken,
+                        message
+                );
+                break;
+
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
                 this.replyText(
