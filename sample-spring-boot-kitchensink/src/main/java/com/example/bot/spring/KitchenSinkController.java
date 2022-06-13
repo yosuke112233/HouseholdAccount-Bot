@@ -644,6 +644,16 @@ public class KitchenSinkController {
                 );
                 break;
 
+            case "好き":
+            	message = "大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!大好き!";
+
+                log.info("Returns echo message {}: {}", replyToken, message);
+                this.replyText(
+                        replyToken,
+                        message
+                );
+                break;
+
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
                 this.replyText(
