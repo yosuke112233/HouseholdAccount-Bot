@@ -12,42 +12,45 @@ public class Item {
 
 	private Item () {};
 
-	public String ITM_000 = "入力";
+	public  static final String ITM_000 = "入力";
 
-	public String ITM_001 = "出力";
+	public  static final String ITM_001 = "出力";
 
+	public  static final String ITM_002 = "収入";
 
-	public String ITM_01 = "収入①";
+	public  static final String ITM_003 = "出費";
 
-	public String ITM_02 = "収入②";
+	public  static final  String ITM_01 = "収入①";
 
-	public String ITM_03 = "その他";
+	public  static final  String ITM_02 = "収入②";
 
-	public String ITM_04 = "前月繰越";
+	public  static final  String ITM_03 = "その他";
 
-	public String ITM_05 = "住宅ローン / 家賃";
+	public  static final  String ITM_04 = "前月繰越";
 
-	public String ITM_06 = "車ローン";
+	public  static final  String ITM_05 = "住宅ローン / 家賃";
 
-	public String ITM_07 = "教育費";
+	public  static final  String ITM_06 = "車ローン";
 
-	public String ITM_08 = "生命保険等";
+	public  static final  String ITM_07 = "教育費";
 
-	public String ITM_09 = "電気";
+	public  static final  String ITM_08 = "生命保険等";
 
-	public String ITM_10 = "ガス";
+	public  static final  String ITM_09 = "電気";
 
-	public String ITM_11 = "インターネット";
+	public  static final  String ITM_10 = "ガス";
 
-	public String ITM_12 = "食費";
+	public  static final  String ITM_11 = "インターネット";
 
-	public String ITM_13 = "医療費";
+	public  static final  String ITM_12 = "食費";
 
-	public String ITM_14 = "日用品";
+	public  static final  String ITM_13 = "医療費";
 
-	public String ITM_15 = "交際費";
+	public  static final  String ITM_14 = "日用品";
 
-	public String ITM_16 = "その他";
+	public  static final  String ITM_15 = "交際費";
+
+	public  static final  String ITM_16 = "その他";
 
 
 }

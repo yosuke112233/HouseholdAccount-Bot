@@ -17,6 +17,7 @@
 package com.example.bot.spring;
 
 import java.util.Arrays;
+
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -30,20 +31,50 @@ import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.model.message.quickreply.QuickReply;
 import com.linecorp.bot.model.message.quickreply.QuickReplyItem;
 
+import com.example.common.*;
+
 public class MessageWithQuickReplySupplier implements Supplier<Message> {
-    @Override
-    public Message get() {
+
+    public Message selectInOrOut() {
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
-                QuickReplyItem.builder()
-                              .action(new MessageAction("MessageAction", "MessageAction"))
-                              .build()
-        );
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_002, Item.ITM_002))
+        		.build(),
+
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_003, Item.ITM_003))
+        		.build()
+        		);
 
         final QuickReply quickReply = QuickReply.items(items);
 
         return TextMessage
                 .builder()
-                .text("Message with QuickReply")
+                .text(LineMessage.MSG_01)
+                .quickReply(quickReply)
+                .build();
+    }
+
+    public Message selectItem_Input() {
+        final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_01, Item.ITM_01))
+        		.build(),
+
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_02, Item.ITM_02))
+        		.build(),
+
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_03, Item.ITM_03))
+        		.build()
+        		);
+
+        final QuickReply quickReply = QuickReply.items(items);
+
+        return TextMessage
+                .builder()
+                .text(LineMessage.MSG_02)
                 .quickReply(quickReply)
                 .build();
     }

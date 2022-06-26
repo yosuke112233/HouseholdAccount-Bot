@@ -320,15 +320,26 @@ public class KitchenSinkController {
                  content.getEmojis());
         switch (text) {
 
-            case "入力":
+            case Item.ITM_000:
             	String message = text.concat("テストです");
-            	this.reply(replyToken, new MessageWithQuickReplySupplier().get());
+            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
                 log.info("Returns echo message {}: {}", replyToken, message);
                 this.replyText(
                         replyToken,
                         message
                 );
                 break;
+
+            case Item.ITM_002:
+            	String message = text.concat("テストです");
+            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Input());
+                log.info("Returns echo message {}: {}", replyToken, message);
+                this.replyText(
+                        replyToken,
+                        message
+                );
+                break;
+
 
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
