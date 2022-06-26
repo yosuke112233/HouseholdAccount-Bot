@@ -36,22 +36,6 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
                 QuickReplyItem.builder()
                               .action(new MessageAction("MessageAction", "MessageAction"))
-                              .build(),
-                QuickReplyItem.builder()
-                              .action(CameraAction.withLabel("CameraAction"))
-                              .build(),
-                QuickReplyItem.builder()
-                              .action(CameraRollAction.withLabel("CemeraRollAction"))
-                              .build(),
-                QuickReplyItem.builder()
-                              .action(LocationAction.withLabel("Location"))
-                              .build(),
-                QuickReplyItem.builder()
-                              .action(PostbackAction.builder()
-                                                    .label("PostbackAction")
-                                                    .text("PostbackAction clicked")
-                                                    .data("{PostbackAction: true}")
-                                                    .build())
                               .build()
         );
 
