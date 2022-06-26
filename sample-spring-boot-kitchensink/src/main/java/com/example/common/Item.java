@@ -3,14 +3,11 @@
  */
 package com.example.common;
 
-import lombok.Data;
-
 /**
  * 項目格納用クラス
  * @author vvggh
  *
  */
-@Data
 public class Item {
 
 	private Item () {};

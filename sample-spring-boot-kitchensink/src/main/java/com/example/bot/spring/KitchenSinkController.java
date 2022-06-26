@@ -361,6 +361,15 @@ public class KitchenSinkController {
         }
     }
 
+    private static DownloadedContent createTempFile(String ext) {
+        String fileName = LocalDateTime.now().toString() + '-' + UUID.randomUUID() + '.' + ext;
+        Path tempFile = KitchenSinkApplication.downloadedContentDir.resolve(fileName);
+        tempFile.toFile().deleteOnExit();
+        return new DownloadedContent(
+                tempFile,
+                createUri("/downloaded/" + tempFile.getFileName()));
+    }
+
     private static DownloadedContent saveContent(String ext, MessageContentResponse responseBody) {
         log.info("Got content-type: {}", responseBody);
 

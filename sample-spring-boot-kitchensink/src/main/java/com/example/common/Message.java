@@ -3,15 +3,12 @@
  */
 package com.example.common;
 
-import lombok.Data;
-
 /**
  *
  * メッセージクラス
  * @author vvggh
  *
  */
-@Data
 public class Message {
 
 	private Message () {};
