@@ -320,7 +320,7 @@ public class KitchenSinkController {
                  content.getEmojis());
         switch (text) {
 
-            case Item.ITM_000:
+            case "入力":
             	String message = text.concat("テストです");
             	this.reply(replyToken, new MessageWithQuickReplySupplier().get());
                 log.info("Returns echo message {}: {}", replyToken, message);
