@@ -35,6 +35,27 @@ import com.example.common.*;
 
 public class MessageWithQuickReplySupplier implements Supplier<Message> {
 
+	@Override
+    public Message get() {
+        final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_002, Item.ITM_002))
+        		.build(),
+
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(Item.ITM_003, Item.ITM_003))
+        		.build()
+        		);
+
+        final QuickReply quickReply = QuickReply.items(items);
+
+        return TextMessage
+                .builder()
+                .text(LineMessage.MSG_01)
+                .quickReply(quickReply)
+                .build();
+    }
+
     public Message selectInOrOut() {
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
         		QuickReplyItem.builder()
