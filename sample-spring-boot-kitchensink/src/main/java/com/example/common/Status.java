@@ -14,10 +14,11 @@ public class Status {
 
 	public Status () {};
 
-	public String STA_00 = "00";
+	private String STA_00 = "00";
 
-	public String STA_01 = "01";
+	private String STA_01 = "01";
 
+	private String CONTEXT = "0"; //ステータス
 
 	public String ITEM = "";
 

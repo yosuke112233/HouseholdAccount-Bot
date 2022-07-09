@@ -27,6 +27,7 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
@@ -318,13 +319,15 @@ public class KitchenSinkController {
         final String userId = event.getSource().getUserId();
 
         //初めてアクセスするユーザーの場合、mapに値を入れる
-        if (Objects.isNull(PseudoSession.getStatus(userId))) {
+        if (CommonFunc.isNULL(PseudoSession.getStatus(userId))) {
             PseudoSession.putStatus(userId, new Status());
         }
 
         String message = text.concat("テストです");
         log.info("Got text message from replyToken:{}: text:{} emojis:{}", replyToken, text,
                  content.getEmojis());
+
+
         switch (text) {
 
             case Item.ITM_000: // 入力
@@ -374,7 +377,7 @@ public class KitchenSinkController {
             case Item.ITM_15:
             case Item.ITM_16:
 
-            	PseudoSession.updateITEM(userId,text);
+            	PseudoSession.updateItem(userId,text);
 
             	break;
 

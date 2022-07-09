@@ -29,26 +29,36 @@ public class PseudoSession {
     /*
      * 各項目の読み取り
      */
-    public static String readITEM(String userId) {
+    public static String readContext(String userId) {
+        return PseudoSession.statusMap.get(userId).getCONTEXT();
+    }
+
+    public static String readItem(String userId) {
         return PseudoSession.statusMap.get(userId).getITEM();
     }
 
-    public static String readDATE(String userId) {
+    public static String readDate(String userId) {
         return PseudoSession.statusMap.get(userId).getDATE();
     }
 
-    public static String readMONEY(String userId) {
+    public static String readMoney(String userId) {
         return PseudoSession.statusMap.get(userId).getMONEY();
     }
 
-    public static String readSUB(String userId) {
+    public static String readSub(String userId) {
         return PseudoSession.statusMap.get(userId).getSUB();
     }
 
     /*
      * 各項目の更新
      */
-    public static void updateITEM(String userId, String item) {
+    public static void updateContext(String userId, String context) {
+        Status newStatus = PseudoSession.statusMap.get(userId);
+        newStatus.setCONTEXT(context);
+        PseudoSession.statusMap.put(userId, newStatus);
+    }
+
+    public static void updateItem(String userId, String item) {
         Status newStatus = PseudoSession.statusMap.get(userId);
         newStatus.setITEM(item);
         PseudoSession.statusMap.put(userId, newStatus);
@@ -60,13 +70,13 @@ public class PseudoSession {
         PseudoSession.statusMap.put(userId, newStatus);
     }
 
-    public static void updateMONEY(String userId, String money) {
+    public static void updateMoney(String userId, String money) {
         Status newStatus = PseudoSession.statusMap.get(userId);
         newStatus.setMONEY(money);
         PseudoSession.statusMap.put(userId, newStatus);
     }
 
-    public static void updateSUB(String userId, String sub) {
+    public static void updateSub(String userId, String sub) {
         Status newStatus = PseudoSession.statusMap.get(userId);
         newStatus.setSUB(sub);
         PseudoSession.statusMap.put(userId, newStatus);
