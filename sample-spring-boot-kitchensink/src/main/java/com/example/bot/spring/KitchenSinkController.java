@@ -315,13 +315,13 @@ public class KitchenSinkController {
     private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
         final String text = content.getText();
-
+        String message = text.concat("テストです");
         log.info("Got text message from replyToken:{}: text:{} emojis:{}", replyToken, text,
                  content.getEmojis());
         switch (text) {
 
             case Item.ITM_000:
-            	String message = text.concat("テストです");
+
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
                 log.info("Returns echo message {}: {}", replyToken, message);
                 this.replyText(
@@ -331,7 +331,7 @@ public class KitchenSinkController {
                 break;
 
             case Item.ITM_002:
-            	String message = text.concat("テストです");
+            	message = text.concat("テストです");
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Input());
                 log.info("Returns echo message {}: {}", replyToken, message);
                 this.replyText(
