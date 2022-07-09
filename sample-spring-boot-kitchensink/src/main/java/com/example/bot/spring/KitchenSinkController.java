@@ -314,7 +314,14 @@ public class KitchenSinkController {
 
     private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
-        final String text = content.getText();
+    	final String text = content.getText();
+        final String userId = event.getSource().getUserId();
+
+        //初めてアクセスするユーザーの場合、mapに値を入れる
+        if (Objects.isNull(PseudoSession.getStatus(userId))) {
+            PseudoSession.putStatus(userId, new Status());
+        }
+
         String message = text.concat("テストです");
         log.info("Got text message from replyToken:{}: text:{} emojis:{}", replyToken, text,
                  content.getEmojis());
@@ -349,6 +356,27 @@ public class KitchenSinkController {
                         message
                 );
                 break;
+
+            case ITM_01: // 項目を選択した場合
+            case ITM_02:
+            case ITM_03:
+            case ITM_04:
+            case ITM_05:
+            case ITM_06:
+            case ITM_07:
+            case ITM_08:
+            case ITM_09:
+            case ITM_10:
+            case ITM_11:
+            case ITM_12:
+            case ITM_13:
+            case ITM_14:
+            case ITM_15:
+            case ITM_16:
+
+            	PseudoSession.updatePlace(userId,text);
+
+            	break;
 
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
