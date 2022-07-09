@@ -374,7 +374,7 @@ public class KitchenSinkController {
             case ITM_15:
             case ITM_16:
 
-            	PseudoSession.updatePlace(userId,text);
+            	PseudoSession.updateITEM(userId,text);
 
             	break;
 
