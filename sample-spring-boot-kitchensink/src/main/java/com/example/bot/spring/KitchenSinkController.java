@@ -357,22 +357,22 @@ public class KitchenSinkController {
                 );
                 break;
 
-            case ITM_01: // 項目を選択した場合
-            case ITM_02:
-            case ITM_03:
-            case ITM_04:
-            case ITM_05:
-            case ITM_06:
-            case ITM_07:
-            case ITM_08:
-            case ITM_09:
-            case ITM_10:
-            case ITM_11:
-            case ITM_12:
-            case ITM_13:
-            case ITM_14:
-            case ITM_15:
-            case ITM_16:
+            case Item.ITM_01: // 項目を選択した場合
+            case Item.ITM_02:
+            case Item.ITM_03:
+            case Item.ITM_04:
+            case Item.ITM_05:
+            case Item.ITM_06:
+            case Item.ITM_07:
+            case Item.ITM_08:
+            case Item.ITM_09:
+            case Item.ITM_10:
+            case Item.ITM_11:
+            case Item.ITM_12:
+            case Item.ITM_13:
+            case Item.ITM_14:
+            case Item.ITM_15:
+            case Item.ITM_16:
 
             	PseudoSession.updateITEM(userId,text);
 
@@ -380,9 +380,11 @@ public class KitchenSinkController {
 
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
+
+
                 this.replyText(
                         replyToken,
-                        text
+                        PseudoSession.readITEM(userId)
                 );
                 break;
         }
