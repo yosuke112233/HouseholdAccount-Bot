@@ -102,7 +102,7 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
     /*
      * 出費項目を選択する
      */
-    public Message selectItem_OutPut() {
+    public Message selectItem_Output() {
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
         		QuickReplyItem.builder().action(new MessageAction(Item.ITM_05, Item.ITM_05)).build(),
         		QuickReplyItem.builder().action(new MessageAction(Item.ITM_06, Item.ITM_06)).build(),
