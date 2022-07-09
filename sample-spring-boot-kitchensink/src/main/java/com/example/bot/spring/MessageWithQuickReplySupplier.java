@@ -56,6 +56,9 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
                 .build();
     }
 
+	/*
+	 * 収入か出費か選択
+	 */
     public Message selectInOrOut() {
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
         		QuickReplyItem.builder()
@@ -76,19 +79,42 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
                 .build();
     }
 
+    /*
+     * 収入項目を選択する
+     */
     public Message selectItem_Input() {
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
-        		QuickReplyItem.builder()
-        		.action(new MessageAction(Item.ITM_01, Item.ITM_01))
-        		.build(),
 
-        		QuickReplyItem.builder()
-        		.action(new MessageAction(Item.ITM_02, Item.ITM_02))
-        		.build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_01, Item.ITM_01)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_02, Item.ITM_02)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_03, Item.ITM_03)).build()
+        		);
 
-        		QuickReplyItem.builder()
-        		.action(new MessageAction(Item.ITM_03, Item.ITM_03))
-        		.build()
+        final QuickReply quickReply = QuickReply.items(items);
+
+        return TextMessage
+                .builder()
+                .text(LineMessage.MSG_02)
+                .quickReply(quickReply)
+                .build();
+    }
+
+    /*
+     * 出費項目を選択する
+     */
+    public Message selectItem_OutPut() {
+        final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_05, Item.ITM_05)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_06, Item.ITM_06)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_07, Item.ITM_07)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_08, Item.ITM_08)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_09, Item.ITM_09)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_10, Item.ITM_10)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_11, Item.ITM_11)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_12, Item.ITM_12)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_13, Item.ITM_13)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_14, Item.ITM_14)).build(),
+        		QuickReplyItem.builder().action(new MessageAction(Item.ITM_15, Item.ITM_15)).build()
         		);
 
         final QuickReply quickReply = QuickReply.items(items);

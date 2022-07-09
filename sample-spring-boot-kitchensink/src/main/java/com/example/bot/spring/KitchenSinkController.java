@@ -320,7 +320,7 @@ public class KitchenSinkController {
                  content.getEmojis());
         switch (text) {
 
-            case Item.ITM_000:
+            case Item.ITM_000: // 入力
 
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
                 log.info("Returns echo message {}: {}", replyToken, message);
@@ -330,7 +330,7 @@ public class KitchenSinkController {
                 );
                 break;
 
-            case Item.ITM_002:
+            case Item.ITM_002: // 収入
             	message = text.concat("テストです");
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Input());
                 log.info("Returns echo message {}: {}", replyToken, message);
@@ -340,6 +340,15 @@ public class KitchenSinkController {
                 );
                 break;
 
+            case Item.ITM_003: // 出費
+            	message = text.concat("テストです");
+            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Output());
+                log.info("Returns echo message {}: {}", replyToken, message);
+                this.replyText(
+                        replyToken,
+                        message
+                );
+                break;
 
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
