@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class Status {
 
-	private Status () {};
+	public Status () {};
 
 	public String STA_00 = "00";
 
