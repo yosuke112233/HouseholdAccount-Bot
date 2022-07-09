@@ -361,21 +361,6 @@ public class KitchenSinkController {
                 break;
 
             case Item.ITM_01: // 項目を選択した場合
-            case Item.ITM_02:
-            case Item.ITM_03:
-            case Item.ITM_04:
-            case Item.ITM_05:
-            case Item.ITM_06:
-            case Item.ITM_07:
-            case Item.ITM_08:
-            case Item.ITM_09:
-            case Item.ITM_10:
-            case Item.ITM_11:
-            case Item.ITM_12:
-            case Item.ITM_13:
-            case Item.ITM_14:
-            case Item.ITM_15:
-            case Item.ITM_16:
 
             	PseudoSession.updateItem(userId,text);
 
@@ -384,10 +369,9 @@ public class KitchenSinkController {
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
 
-
                 this.replyText(
                         replyToken,
-                        PseudoSession.readITEM(userId)
+                        PseudoSession.readItem(userId)
                 );
                 break;
         }
