@@ -321,6 +321,7 @@ public class KitchenSinkController {
         //初めてアクセスするユーザーの場合、mapに値を入れる
         if (CommonFunc.isNULL(PseudoSession.getStatus(userId))) {
             PseudoSession.putStatus(userId, new Status());
+            PseudoSession.updateContext(userId,Status.STA_00);
         }
 
         String message = text.concat("テストです");
