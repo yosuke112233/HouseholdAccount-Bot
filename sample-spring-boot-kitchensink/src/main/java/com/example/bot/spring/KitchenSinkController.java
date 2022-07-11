@@ -336,6 +336,8 @@ public class KitchenSinkController {
                         message
                 );
                 PseudoSession.updateContext(userId,Status.STA_01);
+
+                log.info("ステータス確認 from Context:{}, Status:{}",  PseudoSession.readContext(userId), Status.STA_01);
                 break;
 
             case Status.STA_01: // 日付入力
