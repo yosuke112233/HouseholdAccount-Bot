@@ -330,7 +330,7 @@ public class KitchenSinkController {
 
 
         switch (PseudoSession.readContext(userId)) {
-
+        	log.info("入力メッセージ from replyToken:{}; text:{}; userId:{}; Context:{}", replyToken, text,  userId,PseudoSession.readContext(userId));
             case Status.STA_00://
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
                 this.replyText(
