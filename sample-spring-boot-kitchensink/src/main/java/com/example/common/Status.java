@@ -19,7 +19,15 @@ import lombok.Data;
 @Data
 public class Status {
 
-	public Status () {};
+	private String CONTEXT = "00"; //ステータス
+
+	private String ITEM = "";
+
+	private String DATE = "";
+
+	private String MONEY = "";
+
+	private String SUB = "";
 
 	public  static final String STA_00 = "00";
 
@@ -57,15 +65,7 @@ public class Status {
 
 	public  static final String STA_99 = "99";
 
-	private String CONTEXT = "0"; //ステータス
 
-	public String ITEM = "";
-
-	public String DATE = "";
-
-	public String MONEY = "";
-
-	public String SUB = "";
 
 
 	/*
