@@ -390,7 +390,6 @@ public class KitchenSinkController {
                 break;
 
             case Status.STA_07: // 出費
-            	message = text.concat("テストです");
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Output());
                 this.replyText(
                         replyToken,
@@ -430,7 +429,6 @@ public class KitchenSinkController {
                         test.toString()
                 );
 
-            	MessageUtil.
                 PseudoSession.updateContext(userId,Status.STA_99);
                 break;
 
