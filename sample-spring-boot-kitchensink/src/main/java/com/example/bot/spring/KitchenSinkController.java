@@ -328,46 +328,125 @@ public class KitchenSinkController {
                  content.getEmojis());
 
 
-        switch (text) {
+        switch (PseudoSession.readContext(userId)) {
 
-            case Item.ITM_000: // 入力
-
+            case Status.STA_00://
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
-                log.info("Returns echo message {}: {}", replyToken, message);
                 this.replyText(
                         replyToken,
                         message
                 );
+                PseudoSession.updateContext(userId,Status.STA_01);
                 break;
 
-            case Item.ITM_002: // 収入
-            	message = text.concat("テストです");
+            case Status.STA_01: // 日付入力
+                this.replyText(
+                        replyToken,
+                        LineMessage.MSG_03
+                );
+
+                PseudoSession.updateContext(userId,Status.STA_02);
+                break;
+
+            case Status.STA_02: // 『収入』を選択
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Input());
-                log.info("Returns echo message {}: {}", replyToken, message);
                 this.replyText(
                         replyToken,
                         message
                 );
+                // 日付をセッションに保持
+                PseudoSession.updateDate(userId,text);
+                PseudoSession.updateContext(userId,Status.STA_03);
                 break;
 
-            case Item.ITM_003: // 出費
+            case Status.STA_03: // 収入項目を選択
+            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Input());
+                this.replyText(
+                        replyToken,
+                        message
+                );
+
+                PseudoSession.updateContext(userId,Status.STA_05);
+                break;
+
+            case Status.STA_05: // 金額を入力
+                this.replyText(
+                        replyToken,
+                        LineMessage.MSG_04
+                );
+                // 選択項目をセッションに保持
+                PseudoSession.updateItem(userId,text);
+                PseudoSession.updateContext(userId,Status.STA_06);
+                break;
+
+            case Status.STA_06: // 備考を入力
+                this.replyText(
+                        replyToken,
+                        LineMessage.MSG_07
+                );
+                // 金額をセッションに保持
+                PseudoSession.updateMoney(userId,text);
+                PseudoSession.updateContext(userId,Status.STA_99);
+                break;
+
+            case Status.STA_07: // 出費
             	message = text.concat("テストです");
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Output());
-                log.info("Returns echo message {}: {}", replyToken, message);
                 this.replyText(
                         replyToken,
                         message
                 );
                 break;
 
-            case Item.ITM_01: // 項目を選択した場合
+            case Status.STA_97: // 確認
+            	// 備考をセッションに保持
+            	PseudoSession.updateSub(userId,text);
 
-            	PseudoSession.updateItem(userId,text);
+            	StringBuffer test = new StringBuffer();
+            	test.append(LineMessage.MSG_05);
+            	test.append(LineMessage.LINE_SEPARATOR);
 
-            	break;
+            	test.append("【日付】");
+            	test.append(PseudoSession.readDate(userId));
+            	test.append(LineMessage.LINE_SEPARATOR);
+
+
+            	test.append("【項目】");
+            	test.append(PseudoSession.readItem(userId));
+            	test.append(LineMessage.LINE_SEPARATOR);
+
+
+            	test.append("【金額】");
+            	test.append(PseudoSession.readMoney(userId));
+            	test.append(LineMessage.LINE_SEPARATOR);
+
+
+            	test.append("【備考】");
+            	test.append(PseudoSession.readSub(userId));
+
+
+            	this.replyText(
+                        replyToken,
+                        test.toString()
+                );
+
+            	MessageUtil.
+                PseudoSession.updateContext(userId,Status.STA_99);
+                break;
+
+            case Status.STA_99: // 完了
+
+
+            	this.replyText(
+                        replyToken,
+                        LineMessage.MSG_06
+                );
+                // 選択項目をセッションに保持
+
+                PseudoSession.updateContext(userId,Status.STA_00);
+                break;
 
             default:
-                log.info("Returns echo message {}: {}", replyToken, text);
 
                 this.replyText(
                         replyToken,
