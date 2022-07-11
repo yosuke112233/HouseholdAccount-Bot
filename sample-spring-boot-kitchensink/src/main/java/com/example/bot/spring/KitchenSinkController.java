@@ -325,12 +325,10 @@ public class KitchenSinkController {
         }
 
         String message = text.concat("テストです");
-        log.info("Got text message from replyToken:{}: text:{} emojis:{}", replyToken, text,
-                 content.getEmojis());
-
+        log.info("入力メッセージ from replyToken:{}, text:{}, userId:{} Context:{}", replyToken, text, userId, PseudoSession.readContext(userId));
 
         switch (PseudoSession.readContext(userId)) {
-        	log.info("入力メッセージ from replyToken:{}; text:{}; userId:{}; Context:{}", replyToken, text,  userId,PseudoSession.readContext(userId));
+
             case Status.STA_00://
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
                 this.replyText(
