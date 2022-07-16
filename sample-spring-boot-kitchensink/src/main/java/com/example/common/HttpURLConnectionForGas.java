@@ -95,13 +95,13 @@ public class HttpURLConnectionForGas {
 		 //Send post request
 		 con.setDoOutput(true);
 		 DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		 wr.writeBytes(urlParameters);
+		 wr.writeBytes(encodedResult);
 		 wr.flush();
 		 wr.close();
 
 		 int responseCode = con.getResponseCode();
 		 System.out.println("\nSending 'POST' request to URL : " + url);
-		 System.out.println("Post parameters : " + urlParameters);
+		 System.out.println("Post parameters : " + encodedResult);
 		 System.out.println("Response Code : " + responseCode);
 
 		 BufferedReader in = new BufferedReader(
