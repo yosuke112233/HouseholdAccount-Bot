@@ -364,8 +364,8 @@ public class KitchenSinkController {
                 break;
 
             case Status.STA_07: // 出費
-            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Output());
             	PseudoSession.updateContext(userId,Status.STA_05);
+            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Output());
                 this.replyText(replyToken, message);
                 break;
 
@@ -376,7 +376,7 @@ public class KitchenSinkController {
 
             	Status s = PseudoSession.getStatus(userId);
             	Object[] o = {s.getDate(), s.getItem(), s.getMoney(), s.getSub()};
-            	this.replyText(replyToken, MessageFormat.format(LineMessage.MSG_05, o));
+            	this.reply(replyToken, new MessageWithQuickReplySupplier().selectYesOrNo(o));
                 break;
 
             case Status.STA_99: // 完了

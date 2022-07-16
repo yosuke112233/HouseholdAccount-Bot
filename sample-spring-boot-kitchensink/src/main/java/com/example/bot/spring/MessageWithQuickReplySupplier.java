@@ -16,6 +16,7 @@
 
 package com.example.bot.spring;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 
 import java.util.List;
@@ -129,7 +130,7 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
 	/*
 	 * YesかNoか選択
 	 */
-    public Message selectYesOrNo() {
+    public Message selectYesOrNo(Object[] o) {
 
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
         		QuickReplyItem.builder()
@@ -145,7 +146,7 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
 
         return TextMessage
                 .builder()
-                .text(LineMessage.MSG_05)
+                .text(MessageFormat.format(LineMessage.MSG_05, o))
                 .quickReply(quickReply)
                 .build();
     }
