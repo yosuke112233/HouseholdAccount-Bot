@@ -6,6 +6,7 @@ package com.example.common;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -83,25 +84,23 @@ public class HttpURLConnectionForGas {
 		 con.setRequestProperty("User-Agent", USER__AGENT);
 		 con.setRequestProperty("Accept-Language", "jp");
 
-		 String urlParameters = new String("&item=" + status.getItem()
-		 + "&date=" + status.getDate()
-		 + "&money=" + status.getMoney()
-		 + "&sub=");
 
-		 log.info("before url: ", urlParameters);
-		 String encodedResult = URLEncoder.encode(urlParameters, "UTF-8");
-		 log.info("after url: ", encodedResult);
+		 String encodeItem = Encode(status.getItem());
+		 String encodeDate = Encode(status.getDate());
+		 String encodeMoney = Encode(status.getMoney());
+
+		 String urlParameters = new String("&item=" + encodeItem + "&date=" + encodeDate + "&money=" + encodeMoney + "&sub=");
 
 		 //Send post request
 		 con.setDoOutput(true);
 		 DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		 wr.writeBytes(encodedResult);
+		 wr.writeBytes(urlParameters);
 		 wr.flush();
 		 wr.close();
 
 		 int responseCode = con.getResponseCode();
 		 System.out.println("\nSending 'POST' request to URL : " + url);
-		 System.out.println("Post parameters : " + encodedResult);
+		 System.out.println("Post parameters : " + urlParameters);
 		 System.out.println("Response Code : " + responseCode);
 
 		 BufferedReader in = new BufferedReader(
@@ -119,5 +118,9 @@ public class HttpURLConnectionForGas {
 		 System.out.println(response.toString());
 
 	    }
+
+	 private static String Encode(String arg) throws UnsupportedEncodingException {
+		 return URLEncoder.encode(arg, "UTF-8");
+	 }
 
 }
