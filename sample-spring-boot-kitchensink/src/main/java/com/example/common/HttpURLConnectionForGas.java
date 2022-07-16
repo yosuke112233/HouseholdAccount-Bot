@@ -32,6 +32,7 @@ public class HttpURLConnectionForGas {
 
 		 try {
 			sendPost(test);
+			sendGet();
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			 System.out.println(e.getMessage());
@@ -39,7 +40,7 @@ public class HttpURLConnectionForGas {
 	 }
 
 	 //HTTP GET request
-	 public void sendGet() throws Exception {
+	 public static void sendGet() throws Exception {
 
 		 String url = "http://www.google.com/search?q=mkyong";
 
@@ -94,13 +95,13 @@ public class HttpURLConnectionForGas {
 		 //Send post request
 		 con.setDoOutput(true);
 		 DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		 wr.writeBytes(encodedResult);
+		 wr.writeBytes(urlParameters);
 		 wr.flush();
 		 wr.close();
 
 		 int responseCode = con.getResponseCode();
 		 System.out.println("\nSending 'POST' request to URL : " + url);
-		 System.out.println("Post parameters : " + encodedResult);
+		 System.out.println("Post parameters : " + urlParameters);
 		 System.out.println("Response Code : " + responseCode);
 
 		 BufferedReader in = new BufferedReader(
