@@ -391,7 +391,7 @@ public class KitchenSinkController {
 
             case Status.STA_99: // 完了
 
-                PseudoSession.updateContext(userId,Status.STA_00);
+                PseudoSession.updateContext(userId,Status.STA_01);
             	this.replyText(replyToken, LineMessage.MSG_06);
 
                 break;
