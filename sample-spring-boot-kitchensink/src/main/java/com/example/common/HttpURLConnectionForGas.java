@@ -89,7 +89,7 @@ public class HttpURLConnectionForGas {
 		 String encodeDate = Encode(status.getDate());
 		 String encodeMoney = Encode(status.getMoney());
 
-		 String urlParameters = new String("&item=" + "111" + "&date=" + status.getDate() + "&money=" + status.getMoney() + "&sub=");
+		 String urlParameters = new String("&item=" + encodeItem + "&date=" + status.getDate() + "&money=" + status.getMoney() + "&sub=");
 
 		 //Send post request
 		 con.setDoOutput(true);
