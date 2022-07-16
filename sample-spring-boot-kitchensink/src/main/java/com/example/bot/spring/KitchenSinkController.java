@@ -396,7 +396,8 @@ public class KitchenSinkController {
             case Status.STA_99: // 完了
 
                 PseudoSession.updateContext(userId,Status.STA_01);
-                //this.sendPost(PseudoSession.getStatus(userId));
+                HttpURLConnectionForGas http = new HttpURLConnectionForGas();
+                http.sendPost(PseudoSession.getStatus(userId));
             	this.replyText(replyToken, LineMessage.MSG_06);
 
                 break;
