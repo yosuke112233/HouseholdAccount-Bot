@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class Status {
 
-	private String CONTEXT = "00"; //ステータス
+	private String CONTEXT = "01"; //ステータス
 
 	private String ITEM = "";
 
