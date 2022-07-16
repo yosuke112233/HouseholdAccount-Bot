@@ -330,14 +330,16 @@ public class KitchenSinkController {
         switch (PseudoSession.readContext(userId)) {
 
             case Status.STA_00://
+            	log.info("ステータス確認1 from Context:{}, Status:{}",  PseudoSession.readContext(userId), Status.STA_01);
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectInOrOut());
                 this.replyText(
                         replyToken,
                         message
                 );
+                log.info("ステータス確認2 from Context:{}, Status:{}",  PseudoSession.readContext(userId), Status.STA_01);
                 PseudoSession.updateContext(userId,Status.STA_01);
 
-                log.info("ステータス確認 from Context:{}, Status:{}",  PseudoSession.readContext(userId), Status.STA_01);
+                log.info("ステータス確認3 from Context:{}, Status:{}",  PseudoSession.readContext(userId), Status.STA_01);
                 break;
 
             case Status.STA_01: // 日付入力
