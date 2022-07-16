@@ -61,7 +61,7 @@ public class HttpURLConnectionForGas {
 
 	   //HTTP POST request
 	    //private void sendPost(Status status) throws Exception {
-	    private void sendPost(Status status) throws Exception {
+	    private void sendPost() throws Exception {
 	        String url = "https://script.google.com/macros/s/AKfycbyehWbBWOWUaaov9Mx1VhXyobWE0s_u7jQmdE6P5ckpLMBIznC3/exec";
 	        URL obj = new URL(url);
 	        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
