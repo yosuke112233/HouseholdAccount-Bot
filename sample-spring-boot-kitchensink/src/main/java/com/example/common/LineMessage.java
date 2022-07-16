@@ -26,7 +26,7 @@ public class LineMessage {
 	public static final String MSG_05 = "これでいい？？" + LineMessage.LINE_SEPARATOR
 			+ "【日付】{0}"+ LineMessage.LINE_SEPARATOR
 			+ "【項目】{1}"+ LineMessage.LINE_SEPARATOR
-			+ "【金額】{2}"+ LineMessage.LINE_SEPARATOR;
+			+ "【金額】{2}";
 
 	public static final String MSG_06 = "登録完了しました！";
 
