@@ -12,11 +12,14 @@ import java.net.URLEncoder;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * HTTPコネクション操作クラス
  * @author vvggh
  *
  */
+@Slf4j
 public class HttpURLConnectionForGas {
 	 private final static String USER__AGENT = "Mozilla/5.0";
 
@@ -69,7 +72,9 @@ public class HttpURLConnectionForGas {
 		 + "&money=" + status.getMoney()
 		 + "&sub=");
 
+		 log.info("before url: ", urlParameters);
 		 String encodedResult = URLEncoder.encode(urlParameters, "UTF-8");
+		 log.info("after url: ", encodedResult);
 
 		 //Send post request
 		 con.setDoOutput(true);
@@ -94,6 +99,7 @@ public class HttpURLConnectionForGas {
 		 in.close();
 
 		 //print result
+		 log.info("responsel: ", response.toString());
 		 System.out.println(response.toString());
 
 	    }
