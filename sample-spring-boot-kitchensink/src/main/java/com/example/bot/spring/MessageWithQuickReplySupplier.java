@@ -125,4 +125,28 @@ public class MessageWithQuickReplySupplier implements Supplier<Message> {
                 .quickReply(quickReply)
                 .build();
     }
+
+	/*
+	 * YesかNoか選択
+	 */
+    public Message selectYesOrNo() {
+
+        final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(LineMessage.MSG_08, LineMessage.MSG_08))
+        		.build(),
+
+        		QuickReplyItem.builder()
+        		.action(new MessageAction(LineMessage.MSG_09, LineMessage.MSG_09))
+        		.build()
+        		);
+
+        final QuickReply quickReply = QuickReply.items(items);
+
+        return TextMessage
+                .builder()
+                .text(LineMessage.MSG_05)
+                .quickReply(quickReply)
+                .build();
+    }
 }

@@ -24,6 +24,7 @@ import java.io.UncheckedIOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -373,24 +374,9 @@ public class KitchenSinkController {
                 PseudoSession.updateMoney(userId,text);
             	PseudoSession.updateContext(userId,Status.STA_99);
 
-            	StringBuffer test = new StringBuffer();
-            	test.append(LineMessage.MSG_05);
-            	test.append(LineMessage.LINE_SEPARATOR);
-
-            	test.append("【日付】");
-            	test.append(PseudoSession.readDate(userId));
-            	test.append(LineMessage.LINE_SEPARATOR);
-
-
-            	test.append("【項目】");
-            	test.append(PseudoSession.readItem(userId));
-            	test.append(LineMessage.LINE_SEPARATOR);
-
-
-            	test.append("【金額】");
-            	test.append(PseudoSession.readMoney(userId));
-
-            	this.replyText(replyToken, test.toString());
+            	Status s = PseudoSession.getStatus(userId);
+            	Object[] o = {s.getDate(), s.getItem(), s.getMoney(), s.getSub()};
+            	this.replyText(replyToken, MessageFormat.format(LineMessage.MSG_05, o));
                 break;
 
             case Status.STA_99: // 完了

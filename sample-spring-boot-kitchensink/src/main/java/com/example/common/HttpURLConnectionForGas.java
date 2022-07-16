@@ -24,22 +24,6 @@ import lombok.extern.slf4j.Slf4j;
 public class HttpURLConnectionForGas {
 	 private final static String USER__AGENT = "Mozilla/5.0";
 
-	 public static void main(String[] args) {
-		 Status test = new Status() {};
-		 test.setDate("2022/07/01");
-		 test.setItem("テスト");
-		 test.setMoney("11111");
-		 test.setSub("サブ");
-
-		 try {
-			sendPost(test);
-			sendGet();
-		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
-			 System.out.println(e.getMessage());
-		}
-	 }
-
 	 //HTTP GET request
 	 public static void sendGet() throws Exception {
 
