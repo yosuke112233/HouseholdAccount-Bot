@@ -23,6 +23,21 @@ import lombok.extern.slf4j.Slf4j;
 public class HttpURLConnectionForGas {
 	 private final static String USER__AGENT = "Mozilla/5.0";
 
+	 public static void main(String[] args) {
+		 Status test = new Status() {};
+		 test.setDate("2022/07/01");
+		 test.setItem("テスト");
+		 test.setMoney("11111");
+		 test.setSub("サブ");
+
+		 try {
+			sendPost(test);
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			 System.out.println(e.getMessage());
+		}
+	 }
+
 	 //HTTP GET request
 	 public void sendGet() throws Exception {
 
@@ -57,7 +72,7 @@ public class HttpURLConnectionForGas {
 	 }
 
 	 //HTTP POST request
-	 public void sendPost(Status status) throws Exception {
+	 public static void sendPost(Status status) throws Exception {
 		 String url = "https://script.google.com/macros/s/AKfycbyehWbBWOWUaaov9Mx1VhXyobWE0s_u7jQmdE6P5ckpLMBIznC3/exec";
 		 URL obj = new URL(url);
 		 HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
