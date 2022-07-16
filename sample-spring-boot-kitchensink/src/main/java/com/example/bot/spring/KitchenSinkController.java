@@ -359,6 +359,7 @@ public class KitchenSinkController {
 
             case Status.STA_07: // 出費
             	this.reply(replyToken, new MessageWithQuickReplySupplier().selectItem_Output());
+            	PseudoSession.updateContext(userId,Status.STA_05);
                 this.replyText(replyToken, message);
                 break;
 
@@ -384,10 +385,6 @@ public class KitchenSinkController {
             	test.append("【金額】");
             	test.append(PseudoSession.readMoney(userId));
             	test.append(LineMessage.LINE_SEPARATOR);
-
-
-            	test.append("【備考】");
-            	test.append(PseudoSession.readSub(userId));
 
             	this.replyText(replyToken, test.toString());
                 break;
