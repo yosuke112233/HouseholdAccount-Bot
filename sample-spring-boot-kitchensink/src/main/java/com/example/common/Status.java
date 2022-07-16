@@ -62,8 +62,48 @@ public class Status {
 
 	public  static final String STA_99 = "99";
 
+	/*
+	 * getter, setter
+	 */
+    public String getContext() {
+        return CONTEXT;
+    }
 
+    public void setContext(String context) {
+        this.CONTEXT = context;
+    }
 
+	public String getItem() {
+		return ITEM;
+	}
+
+	public void setItem(String item) {
+		this.ITEM = item;
+	}
+
+	public String getDate() {
+		return DATE;
+	}
+
+	public void setDate(String date) {
+		this.DATE = date;
+	}
+
+	public String getMoney() {
+		return MONEY;
+	}
+
+	public void setMoney(String money) {
+		this.MONEY = money;
+	}
+
+	public String getSub() {
+		return SUB;
+	}
+
+	public void setSub(String sub) {
+		this.SUB = sub;
+	}
 
 	/*
 	 * ステータスと会話のマッピング
