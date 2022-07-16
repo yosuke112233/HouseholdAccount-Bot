@@ -396,7 +396,7 @@ public class KitchenSinkController {
             case Status.STA_99: // 完了
 
                 PseudoSession.updateContext(userId,Status.STA_01);
-                this.sendPost(PseudoSession.getStatus(userId));
+                //this.sendPost(PseudoSession.getStatus(userId));
             	this.replyText(replyToken, LineMessage.MSG_06);
 
                 break;
@@ -406,34 +406,6 @@ public class KitchenSinkController {
                 this.replyText(replyToken, PseudoSession.readItem(userId));
                 break;
         }
-    }
-
-    private void sendPost(Status status) throws Exception {
-
-    	URL url = new URL("https://script.google.com/macros/s/AKfycbyehWbBWOWUaaov9Mx1VhXyobWE0s_u7jQmdE6P5ckpLMBIznC3/exec");
-
-    	HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-    	connection.setDoOutput(true);
-    	connection.setUseCashes(false);
-    	connection.setRequestMethod("POST");
-    	String parameterString = new String("context="+ status.getContext()
-    											+ "&item=" + status.getItem()
-    											+ "&date=" + status.getDate()
-    											+ "&money=" + status.getMoney()
-    											+ "&sub=");
-
-    	PrintWriter printWriter = new PrintWriter(connection.getOutputStream());
-    	printWriter.print(parameterString);
-    	printWriter.close();
-    	BufferReader bufferReader = new BufferReader(new InputStreamReader(connection.getInputStream(), "JISAutoDetect"));
-    	String httpSource = new String();
-    	String str;
-    	while ( null != ( str = bufferReader.readLine() ) ) {
-    	    httpSource = httpSource + str;
-    	}
-    	bufferReader.close();
-    	connection.disconnect();
-
     }
 
     private static URI createUri(String path) {
